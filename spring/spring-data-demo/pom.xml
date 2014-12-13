@@ -25,7 +25,7 @@
 	</properties>
 
 	<modules>
-		<module>sping-data-demo-jpa-service</module>
+		<module>spring-data-demo-jpa-service</module>
         <module>spring-data-demo-jpa-domain</module>
     </modules>
 

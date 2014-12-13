@@ -1,0 +1,13 @@
+{
+	"userName":"tux",
+	"password":"tux",
+	"emailAddress":"tux@linux.org",
+	"contactDTO":
+		{
+		 	"firstName":"tux",
+		 	"lastName":"the penguin",
+		 	"zipCode":"56789",
+		 	"city":"penguin town",
+		 	"streetLine":"penguin street"
+		 }
+}

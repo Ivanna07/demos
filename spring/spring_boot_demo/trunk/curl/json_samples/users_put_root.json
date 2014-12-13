@@ -1,0 +1,15 @@
+{
+	"userId":1,
+	"userName":"root",
+	"password":"root",
+	"emailAddress":"root@spring.boot",
+	"contactDTO":
+		{
+			"contactId":1,
+		 	"firstName":"root",
+		 	"lastName":"bofh",
+		 	"zipCode":"54321",
+		 	"city":"root town",
+		 	"streetLine":"root street"
+		 }
+}

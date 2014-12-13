@@ -11,7 +11,6 @@ import org.tuxdevelop.spring_data_demo.service.CommunicationService;
 
 import java.util.Collection;
 import java.util.LinkedList;
-import java.util.stream.Collectors;
 
 @Component
 public class CommunicationJpaService implements CommunicationService {
@@ -33,7 +32,9 @@ public class CommunicationJpaService implements CommunicationService {
 	public Collection<Communication> addCommunications(final Collection<Communication> communications) {
 		final Collection<Communication> result = new LinkedList<>();
 		if (communications != null && !communications.isEmpty()) {
-			result.addAll(communications.stream().map(this::addCommunication).collect(Collectors.toList()));
+			for(final Communication communication : communications){
+                result.add(addCommunication(communication));
+            }
 		}
 		return result;
 	}
@@ -62,9 +63,9 @@ public class CommunicationJpaService implements CommunicationService {
 	public Collection<Communication> updateCommunications(final Collection<Communication> communications) {
 		final Collection<Communication> updatedCommunications = new LinkedList<>();
 		if (communications != null && !communications.isEmpty()) {
-			updatedCommunications.addAll(communications.stream()
-					.map(communication -> updateCommunication(communication.getId(), communication))
-					.collect(Collectors.toList()));
+			for(final Communication communication : communications){
+                updatedCommunications.add(updateCommunication(communication.getId(),communication));
+            }
 		}
 		return updatedCommunications;
 	}

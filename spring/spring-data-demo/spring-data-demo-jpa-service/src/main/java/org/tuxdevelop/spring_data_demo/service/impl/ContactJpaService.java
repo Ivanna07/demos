@@ -10,7 +10,6 @@ import org.tuxdevelop.spring_data_demo.service.ContactService;
 
 import java.util.Collection;
 import java.util.LinkedList;
-import java.util.stream.Collectors;
 
 @Component
 public class ContactJpaService implements ContactService {
@@ -45,7 +44,9 @@ public class ContactJpaService implements ContactService {
     public Collection<Contact> addContacts(final Collection<Contact> contacts) {
         final Collection<Contact> addedContacts = new LinkedList<>();
         if (contacts != null && !contacts.isEmpty()) {
-            addedContacts.addAll(contacts.stream().map(this::addContact).collect(Collectors.toList()));
+            for(final Contact contact : contacts){
+                addedContacts.add(addContact(contact));
+            }
         }
         return addedContacts;
     }
@@ -72,8 +73,9 @@ public class ContactJpaService implements ContactService {
     public Collection<Contact> updateContacts(final Collection<Contact> contacts) {
         final Collection<Contact> updatedContacts = new LinkedList<>();
         if (contacts != null && !contacts.isEmpty()) {
-            updatedContacts.addAll(contacts.stream().map(contact -> updateContact(contact.getId(), contact))
-                    .collect(Collectors.toList()));
+            for(final Contact contact : contacts){
+                updatedContacts.add(updateContact(contact.getId(),contact));
+            }
         }
         return updatedContacts;
     }

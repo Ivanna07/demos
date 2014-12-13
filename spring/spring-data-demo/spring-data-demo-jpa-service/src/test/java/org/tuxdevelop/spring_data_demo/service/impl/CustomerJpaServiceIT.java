@@ -12,6 +12,8 @@ import org.tuxdevelop.spring_data_demo.jpa.domain.Customer;
 import org.tuxdevelop.spring_data_demo.service.CustomerService;
 import org.tuxdevelop.spring_data_demo.util.CustomerFactory;
 
+import java.util.Date;
+
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(classes = PersistenceJPAConfiguration.class)
 @DirtiesContext(classMode = DirtiesContext.ClassMode.AFTER_EACH_TEST_METHOD)
@@ -36,6 +38,18 @@ public class CustomerJpaServiceIT {
         Assert.assertNotNull(gotCustomer);
     }
 
+    @Test
+    public void updateCustomerIT(){
+        final Customer customer = CustomerFactory.createCustomer();
+        final Customer addedCustomer = customerJpaService.addCustomer(customer);
+        Assert.assertNotNull(addedCustomer);
+        addedCustomer.setChangedBy("changedByMe");
+        addedCustomer.setChangedAt(new Date());
+        final Customer updatedCustomer = customerJpaService.updateCustomer(addedCustomer.getId(),addedCustomer);
+        Assert.assertNotNull(updatedCustomer);
+        Assert.assertEquals("changedByMe",updatedCustomer.getChangedBy());
+
+    }
 
 
 }

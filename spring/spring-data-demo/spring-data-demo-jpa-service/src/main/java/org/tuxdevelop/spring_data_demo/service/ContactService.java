@@ -1,8 +1,8 @@
 package org.tuxdevelop.spring_data_demo.service;
 
-import java.util.Collection;
-
 import org.tuxdevelop.spring_data_demo.jpa.domain.Contact;
+
+import java.util.Collection;
 
 public interface ContactService {
 
@@ -17,4 +17,6 @@ public interface ContactService {
 	Collection<Contact> updateContacts(final Collection<Contact> contacts);
 
 	void deleteContact(final Long id);
+
+    Contact getStandardContactOfCustomer(final Long customerId);
 }

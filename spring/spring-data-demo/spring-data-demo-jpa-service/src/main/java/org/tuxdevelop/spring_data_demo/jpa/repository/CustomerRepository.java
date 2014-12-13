@@ -7,4 +7,5 @@ import org.tuxdevelop.spring_data_demo.jpa.domain.Customer;
 @Repository
 public interface CustomerRepository extends JpaRepository<Customer, Long> {
 
+
 }

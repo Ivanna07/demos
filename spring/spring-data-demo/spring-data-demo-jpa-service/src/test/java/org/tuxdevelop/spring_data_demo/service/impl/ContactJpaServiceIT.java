@@ -10,8 +10,11 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.tuxdevelop.spring_data_demo.configuration.PersistenceJPAConfiguration;
 import org.tuxdevelop.spring_data_demo.jpa.domain.Contact;
 import org.tuxdevelop.spring_data_demo.jpa.domain.ContactClassifier;
+import org.tuxdevelop.spring_data_demo.jpa.domain.Customer;
 import org.tuxdevelop.spring_data_demo.service.ContactService;
+import org.tuxdevelop.spring_data_demo.service.CustomerService;
 import org.tuxdevelop.spring_data_demo.util.ContactFactory;
+import org.tuxdevelop.spring_data_demo.util.CustomerFactory;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(classes = PersistenceJPAConfiguration.class)
@@ -20,6 +23,9 @@ public class ContactJpaServiceIT {
 
     @Autowired
     private ContactService contactJpaService;
+
+    @Autowired
+    private CustomerService customerJpaService;
 
     @Test
     public void addContactIT() {
@@ -39,6 +45,18 @@ public class ContactJpaServiceIT {
         final Contact updatedContact = contactJpaService.updateContact(addedContact.getId(), addedContact);
         Assert.assertNotNull(updatedContact);
         Assert.assertEquals(updatedCity, updatedContact.getCity());
+    }
+
+    @Test
+    public void getStandardContactOfCustomerIT() {
+        final Customer customer = CustomerFactory.createCustomer();
+        final Customer addedCustomer = customerJpaService.addCustomer(customer);
+        Assert.assertNotNull(addedCustomer);
+        final Contact standardContact = contactJpaService.getStandardContactOfCustomer(addedCustomer.getId());
+        Assert.assertNotNull(standardContact);
+        System.err.println(standardContact);
+        Assert.assertEquals(ContactClassifier.STANDARD,standardContact.getContactClassifier());
+
     }
 
 }

@@ -89,4 +89,9 @@ public class ContactJpaService implements ContactService {
         }
     }
 
+    @Override
+    public Contact getStandardContactOfCustomer(final Long customerId) {
+        return contactRepository.getStandardContactOfCustomer(customerId);
+    }
+
 }

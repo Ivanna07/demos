@@ -31,7 +31,6 @@ public class CustomerJpaServiceBean implements CustomerService {
         final Collection<Contact> addedContacts = contactJpaService.addContacts(customer.getContacts());
         customer.setContacts(new LinkedList<>());
         customerRepository.save(customer);
-        customer.setContacts(new LinkedList<>());
         customer.addContactsToCustomer(addedContacts);
         return customerRepository.save(customer);
     }

@@ -27,6 +27,15 @@ public class CustomerJpaServiceIT {
         Assert.assertNotNull(addedCustomer);
     }
 
+    @Test
+    public void getCustomerIT(){
+        final Customer customer = CustomerFactory.createCustomer();
+        final Customer addedCustomer = customerJpaService.addCustomer(customer);
+        Assert.assertNotNull(addedCustomer);
+        final Customer gotCustomer = customerJpaService.getCustomer(addedCustomer.getId());
+        Assert.assertNotNull(gotCustomer);
+    }
+
 
 
 }

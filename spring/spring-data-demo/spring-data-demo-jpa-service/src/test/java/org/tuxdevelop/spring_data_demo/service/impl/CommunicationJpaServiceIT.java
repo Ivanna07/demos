@@ -51,7 +51,7 @@ public class CommunicationJpaServiceIT {
 				.createPhoneCommunication(CommunicationClassifier.STANDARD);
 		final EmailCommunication emailCommunication = CommunicationFactory
 				.createEmailCommunication(CommunicationClassifier.STANDARD);
-		final Collection<Communication> communications = new LinkedList<Communication>();
+		final Collection<Communication> communications = new LinkedList<>();
 		communications.add(emailCommunication);
 		communications.add(phoneCommunication);
 		final Collection<Communication> addedCommunications = communicationJpaService.addCommunications(communications);

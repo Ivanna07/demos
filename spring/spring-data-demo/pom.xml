@@ -20,13 +20,16 @@
 	<properties>
 		<lombok.version>1.14.6</lombok.version>
 		<!--project properties -->
-		<java.version>1.8</java.version>
+		<java.version>1.7</java.version>
+        <java.target.version>1.7</java.target.version>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-	</properties>
+        <maven-compiler-plugin.version>3.2</maven-compiler-plugin.version>
+    </properties>
 
 	<modules>
 		<module>spring-data-demo-jpa-service</module>
         <module>spring-data-demo-jpa-domain</module>
+        <module>spring-data-demo-rest</module>
     </modules>
 
     <dependencies>
@@ -39,4 +42,18 @@
         </dependency>
 
     </dependencies>
+
+    <build>
+        <plugins>
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-compiler-plugin</artifactId>
+                    <version>${maven-compiler-plugin.version}</version>
+                    <configuration>
+                        <source>${java.version}</source>
+                        <target>${java.target.version}</target>
+                    </configuration>
+                </plugin>
+            </plugins>
+     </build>
 </project>

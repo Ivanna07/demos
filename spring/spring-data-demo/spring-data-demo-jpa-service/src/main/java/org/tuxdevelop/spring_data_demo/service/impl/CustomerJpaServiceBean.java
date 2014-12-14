@@ -29,7 +29,7 @@ public class CustomerJpaServiceBean implements CustomerService {
     public Customer addCustomer(final Customer customer) {
         customer.validateAdd();
         final Collection<Contact> addedContacts = contactJpaService.addContacts(customer.getContacts());
-        customer.setContacts(new LinkedList<>());
+        customer.setContacts(new LinkedList<Contact>());
         customerRepository.save(customer);
         customer.addContactsToCustomer(addedContacts);
         return customerRepository.save(customer);

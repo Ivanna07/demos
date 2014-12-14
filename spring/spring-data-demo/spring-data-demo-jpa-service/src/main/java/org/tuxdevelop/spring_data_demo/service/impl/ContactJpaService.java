@@ -32,8 +32,8 @@ public class ContactJpaService implements ContactService {
                 .getEmailCommunications());
         final Collection<Communication> addedPhoneCommunications = communicationJpaService.addCommunications(contact
                 .getPhoneCommunications());
-        contact.setEmailCommunications(new LinkedList<>());
-        contact.setPhoneCommunications(new LinkedList<>());
+        contact.setEmailCommunications(new LinkedList<Communication>());
+        contact.setPhoneCommunications(new LinkedList<Communication>());
         contactRepository.save(contact);
         contact.addCommunicationsToContact(addedEmailCommunications);
         contact.addCommunicationsToContact(addedPhoneCommunications);

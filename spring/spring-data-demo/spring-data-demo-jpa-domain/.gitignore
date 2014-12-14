@@ -1,2 +1,5 @@
 /target/
 /spring-data-demo-jpa-domain.iml
+/.settings/
+/.classpath
+/.project

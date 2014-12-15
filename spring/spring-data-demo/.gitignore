@@ -3,3 +3,5 @@
 /.settings/
 /.project
 /*.iml
+
+spring-data-demo-nosql/spring-data-demo-nosql.iml

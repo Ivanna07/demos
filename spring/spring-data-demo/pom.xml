@@ -30,6 +30,7 @@
 		<module>spring-data-demo-jpa-service</module>
         <module>spring-data-demo-jpa-domain</module>
         <module>spring-data-demo-rest</module>
+        <module>spring-data-demo-nosql</module>
     </modules>
 
     <dependencies>

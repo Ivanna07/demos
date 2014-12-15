@@ -15,6 +15,23 @@
     <link rel="shortcut icon" type="image/png" href="/src/main/resources/static/favicon.ico" th:href="@{favicon.ico}"/>
 </head>
 <body>
-
+<div th:include="fragments/nav :: nav"></div>
+<div class="panel panel-primary">
+    <div class="panel-heading">Current Texts</div>
+    <div class="panel-body">
+        <table class="table table-bordered table-striped">
+            <thead>
+            <tr>
+                <td>Text</td>
+            </tr>
+            </thead>
+            <tbody>
+            <tr th:each="text : ${textViewModel.textCollection}">
+                <td th:text="${text.committer.name + ':' + text.text}"/>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
 </body>
 </html>

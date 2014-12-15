@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.tuxdevelop.spring_data_demo.nosql.controller.model.AddModel;
+import org.tuxdevelop.spring_data_demo.nosql.controller.model.TextViewModel;
 import org.tuxdevelop.spring_data_demo.nosql.domain.Committer;
 import org.tuxdevelop.spring_data_demo.nosql.domain.Text;
 import org.tuxdevelop.spring_data_demo.nosql.repository.CommitterRepository;
@@ -24,6 +25,9 @@ public class TextController {
 
     @Autowired
     private AddModel addModel;
+
+    @Autowired
+    private TextViewModel textViewModel;
 
     @RequestMapping(value = "/",method = RequestMethod.GET)
     public String initRoot(final Model model){
@@ -46,6 +50,12 @@ public class TextController {
         text.setText(addModel.getText());
         text.setCommitter(committer);
         textRepository.save(text);
+    }
+
+    @RequestMapping(value = "/viewer",method = RequestMethod.GET)
+    public TextViewModel getTextViews(final Model model){
+        model.addAttribute("textViewModel",textViewModel);
+        return textViewModel;
     }
 
 

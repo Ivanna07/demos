@@ -1,0 +1,6 @@
+#SPRING BOOT
+server:
+  port: 9000
+  servlet-path: /spring-data-demo/rest
+
+

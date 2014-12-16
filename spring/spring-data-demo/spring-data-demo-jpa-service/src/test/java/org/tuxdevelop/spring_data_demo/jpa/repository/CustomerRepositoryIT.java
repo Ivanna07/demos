@@ -7,7 +7,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.tuxdevelop.spring_data_demo.configuration.PersistenceJPAConfiguration;
-import org.tuxdevelop.spring_data_demo.jpa.domain.Contact;
 import org.tuxdevelop.spring_data_demo.jpa.domain.Customer;
 import org.tuxdevelop.spring_data_demo.util.CustomerFactory;
 

@@ -5,10 +5,15 @@ import lombok.EqualsAndHashCode;
 import lombok.ToString;
 
 import javax.persistence.*;
+import javax.xml.bind.annotation.XmlAccessType;
+import javax.xml.bind.annotation.XmlAccessorType;
+import javax.xml.bind.annotation.XmlRootElement;
 
 @Data
 @EqualsAndHashCode(callSuper = true)
 @ToString(callSuper = true, exclude = {"contact"})
+@XmlRootElement
+@XmlAccessorType(XmlAccessType.FIELD)
 @Entity
 @Table(name = "communication")
 @Inheritance(strategy = InheritanceType.SINGLE_TABLE)

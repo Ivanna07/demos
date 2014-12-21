@@ -6,7 +6,7 @@ import org.tuxdevelop.spring_boot_cxf_demo.domain.Contact;
 import javax.jws.WebService;
 import java.util.Collection;
 
-@WebService
+@WebService(targetNamespace = "org.tuxdevelop.spring_boot_cxf_demo")
 public interface ContactService {
 
 	Contact getContact(final Long id);

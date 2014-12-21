@@ -7,12 +7,17 @@ import lombok.ToString;
 import javax.persistence.Column;
 import javax.persistence.DiscriminatorValue;
 import javax.persistence.Entity;
+import javax.xml.bind.annotation.XmlAccessType;
+import javax.xml.bind.annotation.XmlAccessorType;
+import javax.xml.bind.annotation.XmlRootElement;
 
 @Data
 @EqualsAndHashCode(callSuper = true)
 @ToString(callSuper = true)
 @Entity
 @DiscriminatorValue(value = CommunicationType.PHONE)
+@XmlRootElement
+@XmlAccessorType(XmlAccessType.FIELD)
 public class PhoneCommunication extends Communication {
 
 	private static final long serialVersionUID = 1L;

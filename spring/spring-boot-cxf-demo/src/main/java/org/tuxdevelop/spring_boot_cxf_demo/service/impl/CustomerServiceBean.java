@@ -13,7 +13,6 @@ import java.util.Collection;
 import java.util.LinkedList;
 
 @Service
-@WebService(endpointInterface = "org.tuxdevelop.spring_boot_cxf_demo.service.CustomerService")
 public class CustomerServiceBean implements CustomerService {
 
     @Autowired

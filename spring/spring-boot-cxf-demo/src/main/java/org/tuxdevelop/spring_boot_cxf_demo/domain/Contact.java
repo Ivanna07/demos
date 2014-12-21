@@ -5,20 +5,26 @@ import lombok.EqualsAndHashCode;
 import lombok.ToString;
 
 import javax.persistence.*;
+import javax.xml.bind.annotation.*;
 import java.util.Collection;
 import java.util.LinkedList;
 
 @Data
 @EqualsAndHashCode(callSuper = true)
 @ToString(callSuper = true,exclude = {"customer"})
+@XmlRootElement
+@XmlAccessorType(XmlAccessType.FIELD)
 @Entity
 @Table(name = "contact")
 public class Contact extends AbstractDomainEntity {
 
     private static final long serialVersionUID = 1L;
-
+    @XmlElementWrapper(name = "emailCommunications")
+    @XmlElement(name="emailCommunication")
     @OneToMany(mappedBy = "contact", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     private Collection<Communication> emailCommunications;
+    @XmlElementWrapper(name = "phoneCommunications")
+    @XmlElement(name="phoneCommunication")
     @OneToMany(mappedBy = "contact", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     private Collection<Communication> phoneCommunications;
     @Column(name = "contact_classifier")

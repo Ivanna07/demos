@@ -5,6 +5,7 @@ import lombok.EqualsAndHashCode;
 import lombok.ToString;
 
 import javax.persistence.*;
+import javax.xml.bind.annotation.*;
 import java.util.Collection;
 import java.util.LinkedList;
 
@@ -13,10 +14,14 @@ import java.util.LinkedList;
 @ToString(callSuper = true)
 @Entity
 @Table(name = "customer")
+@XmlRootElement
+@XmlAccessorType(XmlAccessType.FIELD)
 public class Customer extends AbstractDomainEntity {
 
     private static final long serialVersionUID = 1L;
 
+    @XmlElementWrapper(name = "contacts")
+    @XmlElement(name="contact")
     @OneToMany(mappedBy = "customer", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     private Collection<Contact> contacts;
 

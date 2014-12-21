@@ -27,6 +27,7 @@
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <start-class>org.tuxdevelop.spring_boot_cxf_demo.SpringBootCxfDemoApplication</start-class>
         <java.version>1.8</java.version>
+        <jaxws-api.version>2.0</jaxws-api.version>
     </properties>
 
     <dependencyManagement>
@@ -110,6 +111,8 @@
             <artifactId>lombok</artifactId>
             <version>${lombok.version}</version>
         </dependency>
+
+
     </dependencies>
 
     <build>

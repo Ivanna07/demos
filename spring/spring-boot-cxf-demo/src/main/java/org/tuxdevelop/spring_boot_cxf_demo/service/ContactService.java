@@ -9,6 +9,8 @@ import java.util.Collection;
 @WebService(targetNamespace = "org.tuxdevelop.spring_boot_cxf_demo")
 public interface ContactService {
 
+    public static final String SERVICE_NAME ="contactService";
+
 	Contact getContact(final Long id);
 
 	Contact addContact(final Contact contact);

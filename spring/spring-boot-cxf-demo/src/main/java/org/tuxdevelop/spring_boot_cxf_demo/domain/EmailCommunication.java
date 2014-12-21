@@ -4,23 +4,34 @@ import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.ToString;
 
-import javax.persistence.Column;
-import javax.persistence.DiscriminatorValue;
-import javax.persistence.Entity;
+import javax.persistence.*;
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlRootElement;
+import javax.xml.bind.annotation.XmlTransient;
 
 @Data
 @EqualsAndHashCode(callSuper = true)
 @ToString(callSuper = true)
-@Entity
-@DiscriminatorValue(value = CommunicationType.EMAIL)
 @XmlRootElement
 @XmlAccessorType(XmlAccessType.FIELD)
-public class EmailCommunication extends Communication {
+@Entity
+@Table(name="email_communication")
+public class EmailCommunication extends AbstractDomainEntity {
 
 	private static final long serialVersionUID = 1L;
+
+    @Column(name = "communication_type", insertable = false, updatable = false)
+    private String communicationType;
+
+    @Column(name = "communication_classifier")
+    @Enumerated(EnumType.STRING)
+    private CommunicationClassifier communicationClassifier;
+
+    @ManyToOne
+    @PrimaryKeyJoinColumn
+    @XmlTransient
+    private Contact contact;
 
 	@Column(name = "email_address")
 	private String emailAddress;

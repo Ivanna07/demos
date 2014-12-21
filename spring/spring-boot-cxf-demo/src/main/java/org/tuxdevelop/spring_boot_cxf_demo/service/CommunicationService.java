@@ -1,7 +1,7 @@
 package org.tuxdevelop.spring_boot_cxf_demo.service;
 
 
-import org.tuxdevelop.spring_boot_cxf_demo.domain.Communication;
+import org.tuxdevelop.spring_boot_cxf_demo.domain.EmailCommunication;
 
 import javax.jws.WebMethod;
 import javax.jws.WebService;
@@ -13,19 +13,19 @@ public interface CommunicationService {
     public static final String SERVICE_NAME = "communicationService";
 
     @WebMethod
-	Communication getCommunication(final Long id);
+    EmailCommunication getCommunication(final Long id);
 
     @WebMethod
-	Communication addCommunication(final Communication communication);
+	EmailCommunication addCommunication(final EmailCommunication communication);
 
     @WebMethod
-	Collection<Communication> addCommunications(final Collection<Communication> communications);
+	Collection<EmailCommunication> addCommunications(final Collection<EmailCommunication> communications);
 
     @WebMethod
-	Communication updateCommunication(final Long id, final Communication communication);
+	EmailCommunication updateCommunication(final Long id, final EmailCommunication communication);
 
     @WebMethod
-	Collection<Communication> updateCommunications(final Collection<Communication> communications);
+	Collection<EmailCommunication> updateCommunications(final Collection<EmailCommunication> communications);
 
     @WebMethod
 	void deleteCommunication(final Long id);

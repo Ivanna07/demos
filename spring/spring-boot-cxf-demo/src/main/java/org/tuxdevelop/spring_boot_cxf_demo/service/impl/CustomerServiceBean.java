@@ -2,6 +2,8 @@ package org.tuxdevelop.spring_boot_cxf_demo.service.impl;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Propagation;
+import org.springframework.transaction.annotation.Transactional;
 import org.tuxdevelop.spring_boot_cxf_demo.domain.Contact;
 import org.tuxdevelop.spring_boot_cxf_demo.domain.Customer;
 import org.tuxdevelop.spring_boot_cxf_demo.repository.CustomerRepository;
@@ -13,6 +15,7 @@ import java.util.Collection;
 import java.util.LinkedList;
 
 @Service
+@Transactional(propagation = Propagation.REQUIRES_NEW)
 public class CustomerServiceBean implements CustomerService {
 
     @Autowired

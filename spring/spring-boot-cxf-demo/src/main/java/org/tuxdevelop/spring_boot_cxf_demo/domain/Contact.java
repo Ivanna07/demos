@@ -22,11 +22,7 @@ public class Contact extends AbstractDomainEntity {
     @XmlElementWrapper(name = "emailCommunications")
     @XmlElement(name="emailCommunication")
     @OneToMany(mappedBy = "contact", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
-    private Collection<Communication> emailCommunications;
-    @XmlElementWrapper(name = "phoneCommunications")
-    @XmlElement(name="phoneCommunication")
-    @OneToMany(mappedBy = "contact", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
-    private Collection<Communication> phoneCommunications;
+    private Collection<EmailCommunication> emailCommunications;
     @Column(name = "contact_classifier")
     @Enumerated(EnumType.STRING)
     private ContactClassifier contactClassifier;
@@ -42,6 +38,7 @@ public class Contact extends AbstractDomainEntity {
     private String city;
     @ManyToOne
     @PrimaryKeyJoinColumn
+    @XmlTransient
     private Customer customer;
 
     public void merge(final Contact contact) {
@@ -73,9 +70,9 @@ public class Contact extends AbstractDomainEntity {
         validateAdd();
     }
 
-    public void addCommunicationsToContact(final Collection<Communication> communications) {
+    public void addCommunicationsToContact(final Collection<EmailCommunication> communications) {
         if (communications != null && !communications.isEmpty()) {
-            for (final Communication communication : communications) {
+            for (final EmailCommunication communication : communications) {
                 addCommunicationToContact(communication);
                 communication.setContact(this);
             }
@@ -83,22 +80,13 @@ public class Contact extends AbstractDomainEntity {
     }
 
 
-    public void addCommunicationToContact(final Communication communication) {
+    public void addCommunicationToContact(final EmailCommunication communication) {
         final String communicationType = communication.getCommunicationType();
         switch (communicationType) {
             case CommunicationType.EMAIL: {
-                if (!hasStandardContact(communicationType)) {
+                if (!hasStandardCommunication(communicationType)) {
                     if (emailCommunications == null) emailCommunications = new LinkedList<>();
                     emailCommunications.add(communication);
-                }
-                break;
-            }
-            case CommunicationType.PHONE: {
-                if (!hasStandardContact(communicationType)) {
-                    if (phoneCommunications == null) {
-                        phoneCommunications = new LinkedList<>();
-                    }
-                    phoneCommunications.add(communication);
                 }
                 break;
             }
@@ -107,22 +95,12 @@ public class Contact extends AbstractDomainEntity {
         }
     }
 
-    private Boolean hasStandardContact(final String communicationType) {
+    private Boolean hasStandardCommunication(final String communicationType) {
         Boolean hasStandardContact = Boolean.FALSE;
         switch (communicationType) {
             case CommunicationType.EMAIL:
                 if (this.emailCommunications != null && !this.emailCommunications.isEmpty()) {
-                    for (final Communication communication : emailCommunications) {
-                        if (CommunicationClassifier.STANDARD.equals(communication.getCommunicationClassifier())) {
-                            hasStandardContact = Boolean.TRUE;
-                            break;
-                        }
-                    }
-                }
-                break;
-            case CommunicationType.PHONE:
-                if (this.phoneCommunications != null && !this.phoneCommunications.isEmpty()) {
-                    for (final Communication communication : phoneCommunications) {
+                    for (final EmailCommunication communication : emailCommunications) {
                         if (CommunicationClassifier.STANDARD.equals(communication.getCommunicationClassifier())) {
                             hasStandardContact = Boolean.TRUE;
                             break;

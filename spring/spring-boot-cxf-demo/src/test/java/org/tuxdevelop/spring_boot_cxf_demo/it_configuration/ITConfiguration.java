@@ -5,6 +5,7 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.remoting.jaxws.JaxWsPortProxyFactoryBean;
 import org.tuxdevelop.spring_boot_cxf_demo.service.CommunicationService;
+import org.tuxdevelop.spring_boot_cxf_demo.service.ContactService;
 import org.tuxdevelop.spring_boot_cxf_demo.service.CustomerService;
 
 @Configuration
@@ -36,6 +37,18 @@ public class ITConfiguration {
         factoryBean.setServiceName(CommunicationService.SERVICE_NAME);
         factoryBean.afterPropertiesSet();
         return (CommunicationService) factoryBean.getObject();
+    }
+
+    @Bean
+    public ContactService contactServiceBean() {
+        final JaxWsPortProxyFactoryBean factoryBean = new JaxWsPortProxyFactoryBean();
+        factoryBean.setServiceInterface(ContactService.class);
+        factoryBean.setEndpointAddress(SERVER_URI + ContactService.SERVICE_NAME);
+        factoryBean.setUsername(USER_NAME);
+        factoryBean.setPassword(PASSWORD);
+        factoryBean.setServiceName(ContactService.SERVICE_NAME);
+        factoryBean.afterPropertiesSet();
+        return (ContactService) factoryBean.getObject();
     }
 
 }

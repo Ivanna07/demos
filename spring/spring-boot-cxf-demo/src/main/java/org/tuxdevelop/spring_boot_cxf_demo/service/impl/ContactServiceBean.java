@@ -2,17 +2,19 @@ package org.tuxdevelop.spring_boot_cxf_demo.service.impl;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import org.tuxdevelop.spring_boot_cxf_demo.domain.Communication;
+import org.springframework.transaction.annotation.Propagation;
+import org.springframework.transaction.annotation.Transactional;
 import org.tuxdevelop.spring_boot_cxf_demo.domain.Contact;
+import org.tuxdevelop.spring_boot_cxf_demo.domain.EmailCommunication;
 import org.tuxdevelop.spring_boot_cxf_demo.repository.ContactRepository;
 import org.tuxdevelop.spring_boot_cxf_demo.service.CommunicationService;
 import org.tuxdevelop.spring_boot_cxf_demo.service.ContactService;
 
-import javax.jws.WebService;
 import java.util.Collection;
 import java.util.LinkedList;
 
 @Service
+@Transactional(propagation = Propagation.REQUIRES_NEW)
 public class ContactServiceBean implements ContactService {
 
     @Autowired
@@ -29,15 +31,11 @@ public class ContactServiceBean implements ContactService {
     @Override
     public Contact addContact(final Contact contact) {
         contact.validateAdd();
-        final Collection<Communication> addedEmailCommunications = communicationServiceBean.addCommunications(contact
+        final Collection<EmailCommunication> addedEmailCommunications = communicationServiceBean.addCommunications(contact
                 .getEmailCommunications());
-        final Collection<Communication> addedPhoneCommunications = communicationServiceBean.addCommunications(contact
-                .getPhoneCommunications());
-        contact.setEmailCommunications(new LinkedList<Communication>());
-        contact.setPhoneCommunications(new LinkedList<Communication>());
+        contact.setEmailCommunications(new LinkedList<EmailCommunication>());
         contactRepository.save(contact);
         contact.addCommunicationsToContact(addedEmailCommunications);
-        contact.addCommunicationsToContact(addedPhoneCommunications);
         return contactRepository.save(contact);
     }
 
@@ -58,12 +56,9 @@ public class ContactServiceBean implements ContactService {
         final Contact fetchedContact = contactRepository.findOne(id);
         if (fetchedContact != null) {
             fetchedContact.merge(contact);
-            final Collection<Communication> updatedEmailCommunications = communicationServiceBean.updateCommunications
+            final Collection<EmailCommunication> updatedEmailCommunications = communicationServiceBean.updateCommunications
                     (contact.getEmailCommunications());
-            final Collection<Communication> updatedPhoneCommunications = communicationServiceBean.updateCommunications
-                    (contact.getPhoneCommunications());
             fetchedContact.setEmailCommunications(updatedEmailCommunications);
-            fetchedContact.setPhoneCommunications(updatedPhoneCommunications);
             return contactRepository.save(fetchedContact);
         } else {
             throw new RuntimeException("Could not update contact. No contact with id: " + id + " exists");

@@ -20,8 +20,6 @@
 	<properties>
 		<lombok.version>1.14.6</lombok.version>
 		<!--project properties -->
-		<java.version>1.8</java.version>
-        <java.target.version>1.8</java.target.version>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 
     </properties>
@@ -55,17 +53,4 @@
         </dependency>
 
     </dependencies>
-
-    <build>
-        <plugins>
-                <plugin>
-                    <groupId>org.apache.maven.plugins</groupId>
-                    <artifactId>maven-compiler-plugin</artifactId>
-                    <configuration>
-                        <source>${java.version}</source>
-                        <target>${java.target.version}</target>
-                    </configuration>
-                </plugin>
-            </plugins>
-     </build>
 </project>

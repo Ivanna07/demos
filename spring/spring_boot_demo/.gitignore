@@ -1,0 +1,6 @@
+# Created by .ignore support plugin (hsz.mobi)
+spring-boot-demo-client/*.iml
+*.iml
+spring-boot-demo-application/*.iml
+.idea
+.idea/*

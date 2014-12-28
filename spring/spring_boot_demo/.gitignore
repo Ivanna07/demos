@@ -4,3 +4,5 @@ spring-boot-demo-client/*.iml
 spring-boot-demo-application/*.iml
 .idea
 .idea/*
+/.settings/
+/.project

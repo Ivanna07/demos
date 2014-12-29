@@ -19,9 +19,12 @@
 
 	<properties>
 		<lombok.version>1.14.6</lombok.version>
+        <solr.version>4.10.2</solr.version>
 		<!--project properties -->
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 
+        <evo-inflector.version>1.2.1</evo-inflector.version>
+        <jfairy.version>0.3.0</jfairy.version>
     </properties>
 
 	<modules>
@@ -33,25 +36,44 @@
     </modules>
 
     <dependencyManagement>
-        <!--overridden because the version 1.2 is broken on maven central -->
         <dependencies>
+            <!-- spring io plattform -->
+            <dependency>
+                <groupId>io.spring.platform</groupId>
+                <artifactId>platform-bom</artifactId>
+                <version>1.1.0.RELEASE</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
+            <!--overridden because the version 1.2 is broken on maven central -->
             <dependency>
                 <groupId>org.atteo</groupId>
                 <artifactId>evo-inflector</artifactId>
-                <version>1.2.1</version>
+                <version>${evo-inflector.version}</version>
+            </dependency>
+            <!-- solr -->
+            <dependency>
+                <groupId>org.apache.solr</groupId>
+                <artifactId>solr-core</artifactId>
+                <version>${solr.version}</version>
+            </dependency>
+            <!-- jfairy -->
+            <dependency>
+                <groupId>org.jfairy</groupId>
+                <artifactId>jfairy</artifactId>
+                <version>${jfairy.version}</version>
             </dependency>
         </dependencies>
     </dependencyManagement>
 
     <dependencies>
-
         <!-- lombok -->
         <dependency>
             <groupId>org.projectlombok</groupId>
             <artifactId>lombok</artifactId>
             <version>${lombok.version}</version>
+            <scope>provided</scope>
         </dependency>
-
     </dependencies>
 
     <build>

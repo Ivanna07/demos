@@ -38,6 +38,18 @@
             <artifactId>spring-data-solr</artifactId>
         </dependency>
 
+        <!--solr -->
+        <dependency>
+            <groupId>org.apache.solr</groupId>
+            <artifactId>solr-core</artifactId>
+        </dependency>
+
+        <!-- jfairy -->
+        <dependency>
+            <groupId>org.jfairy</groupId>
+            <artifactId>jfairy</artifactId>
+        </dependency>
+
     </dependencies>
 
 </project>

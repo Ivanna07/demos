@@ -16,7 +16,7 @@
 	</properties>
 
 	<dependencies>
-
+		<!-- spring boot -->
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter</artifactId>
@@ -28,7 +28,6 @@
 			</exclusions>
 		</dependency>
 
-		<!-- spring framework -->
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-security</artifactId>
@@ -69,20 +68,29 @@
 		<dependency>
 			<groupId>org.tuxdevelop</groupId>
 			<artifactId>spring-boot-demo-client</artifactId>
-			<version>${parent.version}</version>
 		</dependency>
 
 		<!-- lombok -->
 		<dependency>
 			<groupId>org.projectlombok</groupId>
 			<artifactId>lombok</artifactId>
-			<version>${lombok.version}</version>
+			<scope>provided</scope>
 		</dependency>
 
 		<!-- h2 -->
 		<dependency>
 			<groupId>com.h2database</groupId>
 			<artifactId>h2</artifactId>
+		</dependency>
+
+		<!-- cxf -->
+		<dependency>
+			<groupId>org.apache.cxf</groupId>
+			<artifactId>cxf-rt-frontend-jaxws</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.apache.cxf</groupId>
+			<artifactId>cxf-rt-transports-http</artifactId>
 		</dependency>
 
 	</dependencies>

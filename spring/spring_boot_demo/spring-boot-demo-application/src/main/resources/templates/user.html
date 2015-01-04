@@ -24,37 +24,43 @@
                 <label for="emailAddress" class="control-label col-xs-2">Email Address</label>
 
                 <div class="col-xs-10">
-                    <input class="form-control" id="emailAddress" type="text" th:value="*{user.emailAddress}"/>
+                    <input class="form-control" id="emailAddress" type="text" th:value="*{user.emailAddress}"
+                           th:field="*{user.emailAddress}"/>
                 </div>
 
                 <label for="firstName" class="control-label col-xs-2">First Name</label>
 
                 <div class="col-xs-10">
-                    <input class="form-control" id="firstName" type="text" th:value="*{user.contactDTO.firstName}"/>
+                    <input class="form-control" id="firstName" type="text" th:value="*{user.contactDTO.firstName}"
+                           th:field="*{user.contactDTO.firstName}"/>
                 </div>
 
                 <label for="lastName" class="control-label col-xs-2">Last Name</label>
 
                 <div class="col-xs-10">
-                    <input class="form-control" id="lastName" type="text" th:value="*{user.contactDTO.lastName}"/>
+                    <input class="form-control" id="lastName" type="text" th:value="*{user.contactDTO.lastName}"
+                           th:field="*{user.contactDTO.lastName}"/>
                 </div>
 
                 <label for="zipCode" class="control-label col-xs-2">Zip Code</label>
 
                 <div class="col-xs-10">
-                    <input class="form-control" id="zipCode" type="text" th:value="*{user.contactDTO.zipCode}"/>
+                    <input class="form-control" id="zipCode" type="text" th:value="*{user.contactDTO.zipCode}"
+                           th:field="*{user.contactDTO.zipCode}"/>
                 </div>
 
                 <label for="city" class="control-label col-xs-2">city</label>
 
                 <div class="col-xs-10">
-                    <input class="form-control" id="city" type="text" th:value="*{user.contactDTO.city}"/>
+                    <input class="form-control" id="city" type="text" th:value="*{user.contactDTO.city}"
+                           th:field="*{user.contactDTO.city}"/>
                 </div>
 
                 <label for="streetLine" class="control-label col-xs-2">Street Line</label>
 
                 <div class="col-xs-10">
-                    <input class="form-control" id="streetLine" type="text" th:value="*{user.contactDTO.streetLine}"/>
+                    <input class="form-control" id="streetLine" type="text" th:value="*{user.contactDTO.streetLine}"
+                           th:field="*{user.contactDTO.streetLine}"/>
                 </div>
             </div>
             <div class="form-group">

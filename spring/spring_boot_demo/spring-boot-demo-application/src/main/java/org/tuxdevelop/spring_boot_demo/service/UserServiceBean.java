@@ -5,6 +5,8 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Component;
+import org.springframework.transaction.annotation.Propagation;
+import org.springframework.transaction.annotation.Transactional;
 import org.tuxdevelop.spring_boot_demo.persistence.domain.Contact;
 import org.tuxdevelop.spring_boot_demo.persistence.domain.User;
 import org.tuxdevelop.spring_boot_demo.persistence.domain.UserRole;
@@ -17,6 +19,7 @@ import org.tuxdevelop.spring_boot_demo.service.dto.UserDTO;
 
 @Slf4j
 @Component
+@Transactional(propagation = Propagation.REQUIRES_NEW)
 public class UserServiceBean {
 
 	@Autowired

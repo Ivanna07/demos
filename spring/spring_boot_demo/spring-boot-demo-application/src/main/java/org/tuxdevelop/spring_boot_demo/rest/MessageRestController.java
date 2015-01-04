@@ -31,7 +31,7 @@ public class MessageRestController implements MessageService {
             @RequestParam(value = "userName") final String userName) {
         final List<MessageDTO> messageDTOs = messageServiceBean.getAllReceivedMessagesByUserName(userName);
         final MessageWrapperDTO response = new MessageWrapperDTO();
-        response.setCollection(messageDTOs);
+        response.setMessageDTOs(messageDTOs);
         return response;
     }
 
@@ -40,7 +40,7 @@ public class MessageRestController implements MessageService {
     public MessageWrapperDTO getAllSendMessageDTOsByUserName(@RequestParam(value = "userName") final String userName) {
         final List<MessageDTO> messageDTOs = messageServiceBean.getAllSendMessagesByUserName(userName);
         final MessageWrapperDTO response = new MessageWrapperDTO();
-        response.setCollection(messageDTOs);
+        response.setMessageDTOs(messageDTOs);
         return response;
     }
 }

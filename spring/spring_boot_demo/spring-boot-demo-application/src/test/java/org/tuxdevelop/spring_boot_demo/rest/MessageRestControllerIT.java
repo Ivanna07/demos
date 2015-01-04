@@ -24,11 +24,11 @@ public class MessageRestControllerIT {
 	public void getSendMessageIT() {
 		final MessageWrapperDTO sendMessages = messageServiceRestClient.getAllSendMessageDTOsByUserName(USER_NAME);
 		Assert.assertNotNull(sendMessages);
-		Assert.assertFalse(sendMessages.getCollection().isEmpty());
+		Assert.assertFalse(sendMessages.getMessageDTOs().isEmpty());
 	}
 
 	@Test
-	public void endMessageIT() {
+	public void sendMessageIT() {
 		final MessageDTO messageDTO = new MessageDTO();
 		messageDTO.setEmailAddress("root@spring.boot");
 		messageDTO.setMessage("Hello, Spring Boot");
@@ -42,6 +42,6 @@ public class MessageRestControllerIT {
 		final MessageWrapperDTO receivedMessages = messageServiceRestClient
 				.getAllReceivedMessageDTOsByUserName(USER_NAME);
 		Assert.assertNotNull(receivedMessages);
-		Assert.assertFalse(receivedMessages.getCollection().isEmpty());
+		Assert.assertFalse(receivedMessages.getMessageDTOs().isEmpty());
 	}
 }

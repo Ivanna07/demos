@@ -1,34 +1,72 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
-    <modelVersion>4.0.0</modelVersion>
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
 
-    <groupId>org.tuxdevelop</groupId>
-    <artifactId>spring-boot-demo</artifactId>
-    <version>1.0.0-SNAPSHOT</version>
+	<groupId>org.tuxdevelop</groupId>
+	<artifactId>spring-boot-demo</artifactId>
+	<version>1.0.0-SNAPSHOT</version>
 
-    <name>spring boot demo</name>
-    <description>Demo project for Spring Boot</description>
+	<name>spring boot demo</name>
+	<description>Demo project for Spring Boot</description>
 
-    <parent>
-        <groupId>org.springframework.boot</groupId>
-        <artifactId>spring-boot-starter-parent</artifactId>
-        <version>1.2.0.RELEASE</version>
-        <relativePath/>
-    </parent>
+	<parent>
+		<groupId>org.springframework.boot</groupId>
+		<artifactId>spring-boot-starter-parent</artifactId>
+		<version>1.2.0.RELEASE</version>
+		<relativePath />
+	</parent>
 
-    <packaging>pom</packaging>
+	<packaging>pom</packaging>
 
-    <modules>
-        <module>spring-boot-demo-client</module>
-        <module>spring-boot-demo-application</module>
-    </modules>
+	<modules>
+		<module>spring-boot-demo-client</module>
+		<module>spring-boot-demo-application</module>
+	</modules>
 
-    <properties>
-        <lombok.version>1.14.6</lombok.version>
-        <!--project properties -->
-        <java.version>1.7</java.version>
-        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-    </properties>
+	<properties>
+		<lombok.version>1.14.6</lombok.version>
+		<cxf.version>3.0.3</cxf.version>
+		<evo-inflector.version>1.2.1</evo-inflector.version>
+		<!--project properties -->
+		<java.version>1.7</java.version>
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+	</properties>
+
+	<dependencyManagement>
+		<dependencies>
+			<!-- project dependencies -->
+			<dependency>
+				<groupId>org.tuxdevelop</groupId>
+				<artifactId>spring-boot-demo-client</artifactId>
+				<version>${project.version}</version>
+			</dependency>
+			<!-- spring io -->
+			<dependency>
+				<groupId>io.spring.platform</groupId>
+				<artifactId>platform-bom</artifactId>
+				<version>1.1.0.RELEASE</version>
+				<type>pom</type>
+				<scope>import</scope>
+			</dependency>
+			<!--overridden because the version 1.2 is broken on maven central -->
+			<dependency>
+				<groupId>org.atteo</groupId>
+				<artifactId>evo-inflector</artifactId>
+				<version>${evo-inflector.version}</version>
+			</dependency>
+			<!-- CXF -->
+			<dependency>
+				<groupId>org.apache.cxf</groupId>
+				<artifactId>cxf-rt-frontend-jaxws</artifactId>
+				<version>${cxf.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>org.apache.cxf</groupId>
+				<artifactId>cxf-rt-transports-http</artifactId>
+				<version>${cxf.version}</version>
+			</dependency>
+		</dependencies>
+	</dependencyManagement>
 
 </project>

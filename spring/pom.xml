@@ -12,7 +12,7 @@
         <module>spring-data-demo</module>
         <module>spring-boot-cxf-demo</module>
         <module>spring-data-repositories-cdi</module>
-        <module>spring_boot_demo</module>
+        <module>spring-boot-demo</module>
     </modules>
 
 </project>

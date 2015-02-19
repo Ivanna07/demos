@@ -9,7 +9,7 @@
     <packaging>pom</packaging>
 
     <modules>
-        <module>spring-demos</module>
+        <module>spring</module>
     </modules>
 
 </project>

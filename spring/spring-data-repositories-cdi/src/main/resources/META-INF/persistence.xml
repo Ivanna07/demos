@@ -2,11 +2,13 @@
              xmlns="http://java.sun.com/xml/ns/persistence"
              xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
              xsi:schemaLocation="http://java.sun.com/xml/ns/persistence http://java.sun.com/xml/ns/persistence/persistence_1_0.xsd">
-  <persistence-unit name="customerPU">
-    <provider>org.eclipse.persistence.jpa.PersistenceProvider</provider>
-    <jta-data-source>customerDataBase</jta-data-source>
-    <properties>
-      <property name="openjpa.jdbc.SynchronizeMappings" value="buildSchema(ForeignKeys=true)"/>
-    </properties>
-  </persistence-unit>
+    <persistence-unit name="customerPU">
+        <jta-data-source>java:jboss/datasources/customerDataSource</jta-data-source>
+        <class>org.tuxdevelop.demos.spring_data_repositories_cdi.domain.Customer</class>
+        <class>org.tuxdevelop.demos.spring_data_repositories_cdi.domain.Contact</class>
+        <properties>
+            <property name="hibernate.hbm2ddl.auto" value="create-drop"/>
+            <property name="hibernate.show_sql" value="true"/>
+        </properties>
+    </persistence-unit>
 </persistence>
